@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solee <solee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aylee <aylee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 12:57:56 by solee             #+#    #+#             */
-/*   Updated: 2026/04/23 13:44:47 by solee            ###   ########.fr       */
+/*   Updated: 2026/05/01 19:17:37 by aylee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 void	dfs(t_arg *arg, char **grid, int y, int x)
 {
@@ -40,6 +40,42 @@ int	is_walls_valid(t_arg *arg, char **grid)
 	return (arg->is_valid);
 }
 
+int set_dir_plane(t_player *player, char c)
+{
+	if (c == 'N')
+	{
+		player->dir_x = 0;
+		player->dir_y = -1;
+		player->plane_x = 0.66;
+		player->plane_y = 0;
+	}
+	else if (c == 'S')
+	{
+		player->dir_x = 0;
+		player->dir_y = 1;
+		player->plane_x = -0.66;
+		player->plane_y = 0;
+	}
+	else if (c == 'E')
+	{
+		player->dir_x = 1;
+		player->dir_y = 0;
+		player->plane_x = 0;
+		player->plane_y = 0.66;
+	}
+	else if (c == 'W')
+	{
+		player->dir_x = -1;
+		player->dir_y = 0;
+		player->plane_x = 0;
+		player->plane_y = -0.66;
+	}
+	else
+		return (-1);
+	return (0);
+}
+
+
 int	find_player(t_arg *arg, t_player *player, char **grid)
 {
 	int	i;
@@ -57,6 +93,7 @@ int	find_player(t_arg *arg, t_player *player, char **grid)
 			{
 				player->pos_y = i;
 				player->pos_x = j;
+				set_dir_plane(player, grid[i][j]);
 				ret++;
 			}
 			j++;

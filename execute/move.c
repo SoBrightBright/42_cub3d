@@ -6,11 +6,11 @@
 /*   By: aylee <aylee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 12:17:24 by aylee             #+#    #+#             */
-/*   Updated: 2026/04/19 00:00:00 by aylee            ###   ########.fr       */
+/*   Updated: 2026/05/01 20:25:39 by aylee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 /*
 ** 회전 행렬을 적용해 dir 과 plane 을 동시에 회전한다.
@@ -60,6 +60,11 @@ static void move_strafe(t_game *game, double speed)
 	double right_x;
 	double right_y;
 
+	printf("grid ptr: %p\n", game->map.grid);
+	printf("grid[0]: %s\n", game->map.grid[0]);
+	//여기서 문제 확인
+
+	
 	p = &game->player;
 	g = game->map.grid;
 	right_x = p->dir_y; // dir을 -90도 회전: (dir_y, -dir_x) = 오른쪽

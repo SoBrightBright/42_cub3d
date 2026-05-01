@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   texture_parse.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solee <solee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aylee <aylee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 16:33:09 by solee             #+#    #+#             */
-/*   Updated: 2026/04/23 14:27:53 by solee            ###   ########.fr       */
+/*   Updated: 2026/05/01 19:17:56 by aylee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 void	testure_path_check(t_arg *arg, char *path)
 {

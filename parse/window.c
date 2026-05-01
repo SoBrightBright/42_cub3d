@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solee <solee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aylee <aylee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 15:22:04 by solee             #+#    #+#             */
-/*   Updated: 2026/04/23 14:01:58 by solee            ###   ########.fr       */
+/*   Updated: 2026/05/01 19:18:00 by aylee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 int	get_window_size(t_arg *arg, t_map *map, int fd)
 {

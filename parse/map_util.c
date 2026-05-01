@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_util.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solee <solee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aylee <aylee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 12:59:06 by solee             #+#    #+#             */
-/*   Updated: 2026/04/23 13:45:22 by solee            ###   ########.fr       */
+/*   Updated: 2026/05/01 19:17:34 by aylee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 char	non_whitespace(char *str)
 {

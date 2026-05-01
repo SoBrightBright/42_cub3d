@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   color_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solee <solee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aylee <aylee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 16:32:10 by solee             #+#    #+#             */
-/*   Updated: 2026/04/23 14:05:59 by solee            ###   ########.fr       */
+/*   Updated: 2026/05/01 19:17:30 by aylee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 int	create_trgb(int t, int r, int g, int b)
 {

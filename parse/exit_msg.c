@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exit_msg.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solee <solee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aylee <aylee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 15:57:06 by solee             #+#    #+#             */
-/*   Updated: 2026/04/23 14:06:06 by solee            ###   ########.fr       */
+/*   Updated: 2026/05/01 19:17:31 by aylee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 void	exit_msg(t_arg *arg, char *msg)
 {
