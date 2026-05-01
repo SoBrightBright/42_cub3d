@@ -11,29 +11,18 @@ MLX_DIR = ../minilibx-linux
 MLX = $(MLX_DIR)/libmlx.a
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz -I$(MLX_DIR)
 
-$(NAME) : $(OBJS) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
-
-$(LIBFT) :
-	$(MAKE) -C $(LIBFT_DIR)
-
-$(MLX) :
-	$(MAKE) -C $(MLX_DIR)
+$(NAME): $(OBJS)
+	$(AR) $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I$(MLX_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
-all : $(NAME)
-
-clean :
+clean:
 	rm -f $(OBJS)
-	$(MAKE) -C $(LIBFT_DIR) clean
-	$(MAKE) -C $(MLX_DIR) clean
 
-fclean : clean
+fclean: clean
 	rm -f $(NAME)
-	$(MAKE) -C $(LIBFT_DIR) fclean
 
-re : fclean all
+re: fclean all
 
-.PHONY : all clean fclean re
+.PHONY: all clean fclean re
