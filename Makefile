@@ -1,63 +1,47 @@
-NAME    = cub3D
-CC      = cc
-CFLAGS  = -Wall -Wextra -Werror -g
+NAME        = cub3D
+CC          = cc
+CFLAGS      = -Wall -Wextra -Werror -I./parse -I./excute -I./Libft -I./minilibx-linux -g
+LDFLAGS     = -L./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
 
-EXEC_DIR    = ./execute
-PARSE_DIR   = ./parse
-LIBFT_DIR   = ./Libft
-MLX_DIR     = ./mlx
+PARSE_DIR   = ./parse/
+EXCUTE_DIR  = ./excute/
+LIBFT_DIR   = ./Libft/
+MLX_DIR     = ./minilibx-linux/
 
-EXEC    = $(EXEC_DIR)/cubexec.a
-PARSE   = $(PARSE_DIR)/cubparse.a
-LIBFT   = $(LIBFT_DIR)/libft.a
-MLX     = $(MLX_DIR)/libmlx.a
-MLX_URL = https://github.com/42paris/minilibx-linux.git
+SRC_FILES   = $(PARSE_DIR)color_parse.c $(PARSE_DIR)exit_msg.c $(PARSE_DIR)free.c \
+              $(PARSE_DIR)init.c $(PARSE_DIR)map_util.c $(PARSE_DIR)map.c \
+              $(PARSE_DIR)mlx_init.c $(PARSE_DIR)parse_util.c $(PARSE_DIR)parse.c \
+              $(PARSE_DIR)texture_parse.c $(PARSE_DIR)window.c \
+              $(EXCUTE_DIR)event.c $(EXCUTE_DIR)move.c $(EXCUTE_DIR)raycast.c \
+              $(EXCUTE_DIR)render.c \
+              ./main.c
+
+OBJ_FILES   = $(SRC_FILES:.c=.o)
+LIBFT       = $(LIBFT_DIR)libft.a
+MLX         = $(MLX_DIR)libmlx.a
 
 all: $(NAME)
 
-$(MLX_DIR):
-	git clone $(MLX_URL) $(MLX_DIR)
-
-$(MLX): $(MLX_DIR)
-	@echo " [..] | Compiling minilibx.. "
-	@$(MAKE) -s -C $(MLX_DIR)
-	@echo " [ ok ] | Minilibx ready! "
+$(NAME): $(OBJ_FILES) $(LIBFT) $(MLX)
+	$(CC) $(OBJ_FILES) $(LIBFT) $(LDFLAGS) -o $(NAME)
 
 $(LIBFT):
-	@echo " [..] | Compiling libft.. "
-	@$(MAKE) -s -C $(LIBFT_DIR)
-	@echo " [ ok ] | libft ready! "
+	@make -C $(LIBFT_DIR)
 
-$(EXEC):
-	@echo " [..] | Compiling execute.. "
-	@$(MAKE) -s -C $(EXEC_DIR)
-	@echo " [ ok ] | execute ready! "
+$(MLX):
+	@make -C $(MLX_DIR)
 
-$(PARSE):
-	@echo " [..] | Compiling parse.. "
-	@$(MAKE) -s -C $(PARSE_DIR)
-	@echo " [ ok ] | parse ready! "
-
-$(NAME): $(LIBFT) $(MLX) $(EXEC) $(PARSE)
-	$(CC) $(CFLAGS) \
-		-L$(EXEC_DIR)  -lcubexec  \
-		-L$(PARSE_DIR) -lcubparse \
-		-L$(LIBFT_DIR) -lft       \
-		-L$(MLX_DIR)   -lmlx      \
-		-lXext -lX11 -lm -lz      \
-		-o $(NAME)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@$(MAKE) -s -C $(EXEC_DIR)  clean
-	@$(MAKE) -s -C $(PARSE_DIR) clean
-	@$(MAKE) -s -C $(LIBFT_DIR) clean
+	@make -C $(LIBFT_DIR) clean
+	@make -C $(MLX_DIR) clean
+	rm -f $(OBJ_FILES)
 
 fclean: clean
+	@make -C $(LIBFT_DIR) fclean
 	rm -f $(NAME)
-	@$(MAKE) -s -C $(EXEC_DIR)  fclean
-	@$(MAKE) -s -C $(PARSE_DIR) fclean
-	@$(MAKE) -s -C $(LIBFT_DIR) fclean
-	-@$(MAKE) -s -C $(MLX_DIR)  clean
 
 re: fclean all
 

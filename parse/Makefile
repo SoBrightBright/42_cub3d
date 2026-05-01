@@ -1,13 +1,15 @@
-NAME    = cubparse.a
-CC      = cc
-CFLAGS  = -Wall -Wextra -Werror -g
-AR      = ar rcs
+NAME = cub3D
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -I$(LIBFT_DIR) -I$(MLX_DIR) -g
+SRCS = main.c init.c parse.c color_parse.c texture_parse.c mlx_init.c parse_util.c exit_msg.c free.c window.c map.c map_util.c
+OBJS = $(SRCS:.c=.o)
 
-SRCS    = main.c color_parse.c exit_msg.c free.c init.c map_util.c map.c \
-			parse_util.c parse.c texture_parse.c window.c
-OBJS    = $(patsubst %.c, %.o, $(SRCS))
+LIBFT_DIR = ../Libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
-all: $(NAME)
+MLX_DIR = ../minilibx-linux
+MLX = $(MLX_DIR)/libmlx.a
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz -I$(MLX_DIR)
 
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
